@@ -96,10 +96,17 @@ class Tree {
         return val;
     }
 
+    levelOrder = (somefunc = (val) => console.log(`-${val}-`) ) =>{
+        var q = [];                 //push to enque shift to dequeue
+        q.push(this.root);
+        while(q.length > 0){
+            if(q[0].left!==null) q.push(q[0].left);
+            if(q[0].right!==null) q.push(q[0].right);
+            somefunc(q[0].data)
+            q.shift();
+        }
 
-
-
-
+    }
 
 }
 

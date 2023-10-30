@@ -40,4 +40,10 @@ console.log(`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`);
 prettyPrint(root);
 
 var t = tree.find(92)
-console.log('The node found was: ', t);
+console.log('The node found was: ', t); 
+
+function some(val) {
+  console.log(` -> ${val} `);
+}
+
+tree.levelOrder(some);
