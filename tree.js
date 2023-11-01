@@ -2,7 +2,7 @@ const Node= require('./node');
 
 class Tree {
     root = null;
-
+    
     buildTree = (arr) =>{
         let uniqueArr = [...new Set(arr)];
         
@@ -107,6 +107,51 @@ class Tree {
         }
 
     }
+    
+    inOrder = () =>{    
+        var trav_arr = [];        
+        this.#inOrderRec(this.root, trav_arr);    
+        return trav_arr;
+    }
+
+    #inOrderRec = (node, trav_arr) =>{
+        if(node.data==null) return;
+        if(node.left!== null) this.#inOrderRec(node.left, trav_arr);
+        trav_arr.push(node.data);
+        if(node.right !==null) this.#inOrderRec(node.right, trav_arr);
+    }
+
+    preOrder = () =>{
+        var trav_arr = [];
+        this.#preOrderRec(this.root, trav_arr);
+        return trav_arr;
+    }
+
+    #preOrderRec = (node, trav_arr) =>{
+        if(node.data===null) return;
+        trav_arr.push(node.data);
+        if(node.left!== null) this.#preOrderRec(node.left, trav_arr);
+        if(node.right !==null) this.#preOrderRec(node.right, trav_arr);
+    }
+
+    postOrder = () =>{
+        var trav_arr = [];
+        this.#postOrderRec(this.root, trav_arr);
+        return trav_arr;
+    }
+
+    #postOrderRec = (node, trav_arr) =>{
+        if(node.data===null) return;
+        if(node.left!== null) this.#postOrderRec(node.left, trav_arr);
+        if(node.right !==null) this.#postOrderRec(node.right, trav_arr);
+        trav_arr.push(node.data);
+    }
+
+    // height = (val) =>{
+    //     const val_node = this.find(val);
+
+    // }
+
 
 }
 
