@@ -201,10 +201,14 @@ class Tree {
             this.isBalanced(node.right);
         }
         return true;
-
-        
-
     }
+
+    reBalance = () =>{
+        var sorted_list = this.inOrder();
+        console.log(sorted_list);
+        return this.buildTree(sorted_list);
+    }
+
 
 }
 

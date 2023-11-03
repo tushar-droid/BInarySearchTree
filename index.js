@@ -56,4 +56,9 @@ prettyPrint(root);
 console.log(tree.height(478932));
 // console.log(tree.depth(1));
 console.log(tree.isBalanced());
+root = tree.reBalance();
 
+
+console.log(`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`);
+prettyPrint(root);
+console.log(tree.isBalanced());
