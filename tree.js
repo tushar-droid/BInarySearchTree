@@ -147,11 +147,64 @@ class Tree {
         trav_arr.push(node.data);
     }
 
-    // height = (val) =>{
-    //     const val_node = this.find(val);
+    height = (val) =>{
+        var val_node;
+        if(typeof(val) !=='object'){
+        val_node = this.find(val);
+        }
+        else{
+            val_node = val;
+        }
+        return this.#heightRec(val_node);
+        
+    }   
 
-    // }
+    #heightRec = (val) =>{
+        if(val===null) return -1;
+        else{
+            var leftHeight = this.#heightRec(val.left);
+            var rightHeight = this.#heightRec(val.right);
+            if(leftHeight > rightHeight) return leftHeight+1;
+            else return rightHeight + 1; 
+        }
+    }
 
+    depth = (value) =>{
+        const val_node = this.find(value);
+        
+        return this.#depthRec(this.root, val_node.data, 0);
+        
+    }
+
+    #depthRec = (node, value, height) =>{
+        if(node === null) {
+            return height;}
+        if(node.data < value){
+            height = height + 1;
+            height = this.#depthRec(node.right , value, height);
+        }
+        else if(node.data > value){
+            height = height+1;
+            height = this.#depthRec(node.left, value, height);
+        }
+        return height
+    }
+
+    isBalanced = (node = this.root) =>{
+        if (node === null) return 0;
+
+        var l_height = this.height(node.left);
+        var r_height = this.height(node.right);
+        if(Math.abs(l_height-r_height) > 1) return false;
+        else{
+            this.isBalanced(node.left);
+            this.isBalanced(node.right);
+        }
+        return true;
+
+        
+
+    }
 
 }
 
